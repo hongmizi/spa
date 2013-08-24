@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>i Beauty Spa Nyc</title>
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+    <meta name="description" content="i Beauty Spa NYC is located on Grand Street in Chinatown, New York City.  This spa has a full menu of services, from facials, makeup, and massages to wax/laser hair removal and eyelash extensions." />
+    <meta name="keywords" content="beauty spa nyc chinatown china town new york city facial treatment makeup eye treatment body massage waxing laser mole removal back neck eyebrow eyelash extension embroidery tinting bikini brazilian wax laser hair removal bridesmaid bridal" />
+  </head>
+
+  <%= yield :scripts%>
+  <body>
+
+    <div id="page" class="sidebar-left">
+      <div id="headerSpacer"></div>
+      <div id="header">
+        <h1 id="logo"><!----><a href="/"><p>i Beauty Spa NYC</p></a><!----></h1>
+        <div class="spacer"></div>
+
+        <div id="header-area">
+          <div id="blockStyle57HeaderNav9" class="tagline ccm-block-styles" >
+            <p>Cozy relaxation at a convenient spot in Chinatown</p></div></div>
+      </div>
+      <div id="central">
+
+        <div id="banner">
+          <div> <%= image_tag "banner1.jpg"%></div>
+          <div> <%= image_tag "banner2.jpg"%></div>
+          <div> <%= image_tag "banner3.jpg"%></div>
+          <div> <%= image_tag "banner4.jpg"%></div>
+          <div> <%= image_tag "banner5.jpg"%></div>
+          <div> <%= image_tag "banner6.jpg"%></div>
+        </div>
+
+        <div id="sidebar">
+          <ul class="nav">
+            <li class="nav-selected nav-path-selected"><a class="nav-selected nav-path-selected"  href="/">Home</a></li>
+            <li><%= link_to "Location", page_path("location")%></li>
+            <li><%= link_to "Services", page_path("services")%>
+              <ul>
+                <li><%= link_to "Special Eye Treatments", page_path("special-eye-treatments")%></li>
+                <li><%= link_to "Make-up", page_path("make-up")%></li>
+                <li><%= link_to "Facial Treatments", page_path("facial-treatments")%></li>
+                <li><%= link_to "Special Treatments", page_path("special-treatments")%></li>
+                <li><%= link_to "Body Treatments", page_path("body-treatments")%></li>
+                <li><%= link_to "Hair Removal", page_path("hair-treatments")%></li>
+                <li><%= link_to "Makeup Courses", page_path("makeup-courses")%></li>
+            </ul></li>
+            <li><%= link_to "Promotions", page_path("promotions")%></li>
+            <li><%= link_to "Photos", page_path("photos")%></li>
+            <li><%= link_to "Gift Certificate", page_path("gift-certificates")%></li>
+          </ul>
+        </div>
+
+
+        <%= yield %>
+
+        <div class="spacer">&nbsp;</div>
+      </body>
+
+      <div>
+        <%= render "layouts/footer"%>
+      </div>
+
+      <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-29149765-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+         var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+         ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+         })();
+
+</script>
+
+</html>
