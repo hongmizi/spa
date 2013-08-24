@@ -1,0 +1,6 @@
+.ac-fader {
+	position: relative;
+}
+.ac-fader * {
+	position: absolute;
+}
