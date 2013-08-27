@@ -498,3 +498,6 @@ color:#fff;
 
 .sign-in {display:none;}
 .powered-by{display:none;} /* customize_miscellaneous */
+#sidebar ul.nav ul{
+  z-index: 10000;
+}
