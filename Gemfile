@@ -3,6 +3,11 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.13'
 gem 'high_voltage'
 
+gem 'devise'
+gem "paperclip", "~> 3.0"
+gem 'less-rails-bootstrap'
+gem 'therubyracer'
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
@@ -22,7 +27,16 @@ group :assets do
 end
 
 group :development, :test do 
-  gem 'sqlite3'
+  gem 'mysql2'
+  gem 'factory_girl',       '2.0.2'      # 2.0.3 breaks loading factories with a Duplication Error
+  gem 'rspec'
+  gem 'rspec-rails'
+  gem 'byebug'
+  gem 'shoulda-matchers'
+end
+
+group :test do
+  gem 'database_cleaner'
 end
 
 gem 'jquery-rails'
