@@ -14,7 +14,7 @@ html, body {
 body {
 	padding: 0px;
 	margin: 0px;
-	background: #fff url("footer_grass.jpg") repeat-x fixed left bottom;
+	background: #fff url("/assets/footer_grass.jpg") repeat-x fixed left bottom;
 }
 img {
 	border: 0px
@@ -37,7 +37,7 @@ a { cursor:pointer }
 #page #header {
 	position:relative;
 	height:100px;
-	background: url("header_bg.jpg") repeat-x top left #73880b;
+	background: url("/assets/header_bg.jpg") repeat-x top left #73880b;
 	padding:15px;
 }
 #page #header #logo {
@@ -100,7 +100,7 @@ a { cursor:pointer }
 }
 
 #page #homeHeader {
-	background: url("home_header.jpg") top left no-repeat;
+	background: url("/assets/home_header.jpg") top left no-repeat;
 	min-height:192px;
 }
 
@@ -191,7 +191,7 @@ a { cursor:pointer }
 #footer {
 	height:10px;
 	line-height:10px;
-	background:url("footer_bg.jpg") repeat-x;
+	background:url("/assets/footer_bg.jpg") repeat-x;
 	clear:both;
 	color:#daf095;
 	font-size:10px;
@@ -227,7 +227,7 @@ div.spacer, div.ccm-spacer {
 }
 
 /* customize_miscellaneous */ body {
-background: url('bg1.jpg');
+background: url('/assets/bg1.jpg');
 }
 body * { font-family:'Gill Sans','Lucida Sans Unicode','Lucida Grande',Helvetica,Arial,sans-serif;
 }
@@ -289,10 +289,10 @@ font-family: Myriad Pro, Helvetica, Arial, sans serif!important;
 width:800px;
 box-shadow: 2px 0px 18px rgba(38,38,38,0.7), -2px 0px 18px rgba(38,38,38,0.7);
 border-radius: 5px;
-background: #f4ffd1 url('leafpattern.png')!important;
+background: #f4ffd1 url('/assets/leafpattern.png')!important;
 }
 #central {
-background-image: url('leafpattern.png');
+background-image: url('/assets/leafpattern.png');
 }
 #body {
 background:none!important;

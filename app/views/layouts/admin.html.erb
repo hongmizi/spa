@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>i Beauty Spa Nyc</title>
+    <%= stylesheet_link_tag    "admin", :media => "all" %>
+    <%= javascript_include_tag "admin" %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <%= yield :scripts%>
+  <body>
+
+    <%= render "layouts/admin_top_bar"%>
+      <div class="container">
+        <!-- alert and notice begin -->
+        <% if flash[:alert].present? %>
+          <div class="alert alert-error fade in">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <h4></h4>    <strong><%= flash[:alert]%></strong>
+          </div>
+        <% end %>
+        <% if flash[:notice].present? %>
+          <div class="alert alert-success fade in">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <h4></h4>    <strong><%= flash[:notice]%></strong>
+          </div>
+        <% end %>
+        <!-- alert and notice end-->
+      </div>
+
+    <%= yield %>
+
+  </body>
+</html>
