@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130828143817) do
+ActiveRecord::Schema.define(:version => 20130829045956) do
 
   create_table "brands", :force => true do |t|
     t.string   "name"
@@ -19,6 +19,72 @@ ActiveRecord::Schema.define(:version => 20130828143817) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
+
+  create_table "carts", :force => true do |t|
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "carts", ["user_id"], :name => "index_carts_on_user_id"
+
+  create_table "categories", :force => true do |t|
+    t.string   "name"
+    t.integer  "parent_id"
+    t.integer  "lft"
+    t.integer  "rgt"
+    t.integer  "depth"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "images", :force => true do |t|
+    t.string   "imageable_type"
+    t.integer  "imageable_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+  end
+
+  create_table "line_items", :force => true do |t|
+    t.integer  "product_id"
+    t.integer  "user_id"
+    t.integer  "cart_id"
+    t.integer  "quantity"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "line_items", ["cart_id"], :name => "index_line_items_on_cart_id"
+  add_index "line_items", ["product_id"], :name => "index_line_items_on_product_id"
+  add_index "line_items", ["user_id"], :name => "index_line_items_on_user_id"
+
+  create_table "listings", :force => true do |t|
+    t.integer  "product_id"
+    t.string   "name"
+    t.integer  "stock"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "listings", ["product_id"], :name => "index_listings_on_product_id"
+
+  create_table "products", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "brand_id"
+    t.string   "type"
+    t.string   "state"
+    t.integer  "stock"
+    t.integer  "category_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "products", ["brand_id"], :name => "index_products_on_brand_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -33,6 +99,7 @@ ActiveRecord::Schema.define(:version => 20130828143817) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+    t.integer  "roles_mask"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
