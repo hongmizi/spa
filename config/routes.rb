@@ -12,6 +12,7 @@ IBeautySpaNyc::Application.routes.draw do
   namespace :admin do
     get '/', to: "admin#show"
     resources :products
+    resources :orders
     resources :brands
   end
 end
