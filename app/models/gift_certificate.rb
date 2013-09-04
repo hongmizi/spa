@@ -1,10 +1,10 @@
 class GiftCertificate < ActiveRecord::Base
   default_scope order('created_at')
 
-  attr_accessible :brand_id, :description, :name
+  attr_accessible :brand_id, :description, :name, :state, :listings_attributes
 
   has_many :images, as: :imageable, dependent: :destroy
-  has_many :listtings, as: :purchasable
+  has_many :listings, as: :purchasable
   accepts_nested_attributes_for :listings, allow_destroy: true, reject_if: lambda {|a| a[:name].blank? }
 
   scope :shelved, where(state: 'shelved')

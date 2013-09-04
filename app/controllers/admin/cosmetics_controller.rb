@@ -1,7 +1,5 @@
 class Admin::CosmeticsController < Admin::BaseController
   layout "admin"
-  before_filter :authenticate_user!
-  before_filter :ensure_is_admin
 
   def index
     @cosmetics = Cosmetic.all
@@ -44,13 +42,6 @@ class Admin::CosmeticsController < Admin::BaseController
       return redirect_to admin_cosmetics_path, notice: "successful"
     else
       return redirect_to admin_cosmetics_path, alert: cosmetic.errors.full_messages.to_sentence
-    end
-  end
-
-  private
-  def ensure_is_admin
-    if !current_user.has_role? :admin
-      return redirect_to root_path, alert: "You don't have permission."
     end
   end
 end
