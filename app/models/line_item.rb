@@ -5,7 +5,9 @@ class LineItem < ActiveRecord::Base
   belongs_to :user
   belongs_to :listing
   belongs_to :order
+
   delegate :purchasable_name, to: :listing
+  delegate :purchasable, to: :listing
   delegate :price, to: :listing
   delegate :can_purchase?, to: :listing
 

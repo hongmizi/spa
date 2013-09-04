@@ -11,7 +11,7 @@ class Cart < ActiveRecord::Base
   end
 
   def total
-    line_item.inject(0) do | res, i|
+    line_items.inject(0) do | res, i|
     res + i.quantity * i.price
     end
   end

@@ -15,6 +15,7 @@ class Order < ActiveRecord::Base
 
   has_many :line_items
   belongs_to :user
+  validates :line_items, presence: true
 
   def total
     line_item.inject(0) do | res, i|

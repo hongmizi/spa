@@ -1,5 +1,6 @@
 class CartController < ApplicationController
   before_filter :load_cart
+  before_filter :clean_cart
 
   def show
   end
@@ -36,7 +37,17 @@ class CartController < ApplicationController
   private
   def load_cart
     @cart =  Cart.shopping.find_by_id session[:cart]
-    @cart ||= Cart.create
+    if @cart.nil? || @cart.completed?
+      @cart = Cart.create
+    end
     session[:cart] = @cart.id
+  end
+
+  def clean_cart
+    @cart.line_items.each do |line_item|
+      if line_item.listing.nil? || line_item.listing.purchasable.nil?
+        line_item.destroy
+      end
+    end
   end
 end

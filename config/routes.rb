@@ -9,7 +9,7 @@ IBeautySpaNyc::Application.routes.draw do
   mount Ckeditor::Engine => "/ckeditor"
 
   resources :cosmetics, only: [:index, :show]
-  resources :orders, only: [:show]
+  resources :orders, only: [:show, :index, :create]
   get "/checkout", to: "orders#new"
 
   get "/cart", to: "cart#show"

@@ -1,7 +1,16 @@
 <ol>
   <% @cart.line_items.each do |line_item | %>
     <% if line_item.listing && line_item.can_purchase? %>
-      <li> <%= line_item.purchasable_name %> </li>
+    <li> 
+      name: <%= line_item.purchasable_name %>
+      type: <%= line_item.listing.name %>
+      Quantity: <%= line_item.quantity %>
+    </li>
     <% end %>
   <% end %>
 </ol>
+
+  Total: $<%= @cart.total %>
+
+<br />
+<%= link_to "Checkout", orders_path, method: :post %>
