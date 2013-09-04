@@ -10,7 +10,7 @@ class CartController < ApplicationController
       line_item.quantity = line_item.quantity + 1
     else
       listing = Listing.find params[:listing]
-      line_item = @cart.line_items.new listing_id: listing.id, quantity: 1
+      line_item = @cart.line_items.new listing_id: listing.id, quantity: 1, price: listing.price
     end
 
     if line_item.save

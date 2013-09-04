@@ -10,6 +10,8 @@ gem 'therubyracer'
 gem 'state_machine'
 gem 'role_model'
 gem 'awesome_nested_set'
+gem "ckeditor"
+
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

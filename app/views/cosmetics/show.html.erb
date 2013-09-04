@@ -5,4 +5,4 @@
   <%= link_to "add to cart", cart_path(listing: listing.id), method: :create%>
 <% end %>
 
-<%= @cosmetic.description %>
+<%= @cosmetic.description.html_safe %>

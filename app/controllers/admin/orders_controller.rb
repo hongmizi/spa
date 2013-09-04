@@ -6,19 +6,6 @@ class Admin::OrdersController < Admin::BaseController
     @orders = Order.all
   end
 
-  def new
-  end
-
-  def create
-    order  = Order.new params[:order]
-
-    if order.save
-      return redirect_to admin_orders_path, alert: "successful"
-    else
-      return redirect_to admin_orders_path, alert: order.errors.full_messages.to_sentence
-    end
-  end
-
   def show
     @order = Order.find params[:id]
   end

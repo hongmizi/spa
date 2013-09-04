@@ -9,4 +9,10 @@ class Cart < ActiveRecord::Base
       transition :shopping => :completed
     end
   end
+
+  def total
+    line_item.inject(0) do | res, i|
+    res + i.quantity * i.price
+    end
+  end
 end

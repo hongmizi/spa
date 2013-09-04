@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130902072554) do
+ActiveRecord::Schema.define(:version => 20130904162554) do
 
   create_table "brands", :force => true do |t|
     t.string   "name"
@@ -38,6 +38,22 @@ ActiveRecord::Schema.define(:version => 20130902072554) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "ckeditor_assets", :force => true do |t|
+    t.string   "data_file_name",                  :null => false
+    t.string   "data_content_type"
+    t.integer  "data_file_size"
+    t.integer  "assetable_id"
+    t.string   "assetable_type",    :limit => 30
+    t.string   "type",              :limit => 30
+    t.integer  "width"
+    t.integer  "height"
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+  end
+
+  add_index "ckeditor_assets", ["assetable_type", "assetable_id"], :name => "idx_ckeditor_assetable"
+  add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], :name => "idx_ckeditor_assetable_type"
 
   create_table "cosmetics", :force => true do |t|
     t.string   "name"
@@ -79,9 +95,11 @@ ActiveRecord::Schema.define(:version => 20130902072554) do
     t.integer  "user_id"
     t.integer  "cart_id"
     t.integer  "quantity"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
     t.integer  "listing_id"
+    t.decimal  "price",      :precision => 8, :scale => 2
+    t.integer  "order_id"
   end
 
   add_index "line_items", ["cart_id"], :name => "index_line_items_on_cart_id"
@@ -91,10 +109,11 @@ ActiveRecord::Schema.define(:version => 20130902072554) do
   create_table "listings", :force => true do |t|
     t.string   "name"
     t.integer  "stock"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",                                     :null => false
+    t.datetime "updated_at",                                     :null => false
     t.integer  "purchasable_id"
     t.string   "purchasable_type"
+    t.decimal  "price",            :precision => 8, :scale => 2
   end
 
   add_index "listings", ["purchasable_id"], :name => "index_listings_on_purchasable_id"

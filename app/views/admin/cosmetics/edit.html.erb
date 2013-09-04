@@ -1,17 +1,3 @@
 <div class="container">
-  <br />
-  <%= form_for @cosmetic, url: admin_cosmetic_path(@cosmetic)  do |f|%>
-    <span class="help-inline">Name</span>
-    <%= f.text_field :name, placeholder: "Please enter the name of cosmetic"%><br/>
-
-    <span class="help-inline">Description</span>
-    <%= f.text_field :description, placeholder: "Please enter the description of cosmetic"%><br />
-
-    <%= f.fields_for :listings do | builder|%>
-      <%= render "listing_fields" , f: builder%>
-    <% end %>
-
-    <%= link_to_add_fields "add type", f, :listings %> <br />
-    <%= f.submit "commit", class:"btn btn-lg btn-primary"%>
-  <% end %>
+  <%= render "form", url: admin_cosmetic_path(@cosmetic) %>
 </div>

@@ -5,6 +5,7 @@ class GiftCertificate < ActiveRecord::Base
 
   has_many :images, as: :imageable, dependent: :destroy
   has_many :listtings, as: :purchasable
+  accepts_nested_attributes_for :listings, allow_destroy: true, reject_if: lambda {|a| a[:name].blank? }
 
   scope :shelved, where(state: 'shelved')
 
@@ -17,4 +18,6 @@ class GiftCertificate < ActiveRecord::Base
       transition :shelved => :off_shelved
     end
   end
+
+  validates :listings, presence: true
 end

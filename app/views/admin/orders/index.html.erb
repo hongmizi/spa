@@ -1,0 +1,31 @@
+<div class="container">
+  <table class="table">
+    <tr>
+      <th>ID</th>
+      <th>Products</th>
+      <th>Total</th>
+      <th>State</th>
+    </tr>
+    <% @orders.each do |order|%>
+      <% if order.delivered?%>
+        <tr class="success">
+      <% else %>
+        <tr class="danger">
+      <% end %>
+      <td><%= order.id %></td>
+      <td>
+        <% order.line_items.each do |line_item| %>
+          Name: <%=  line_item.purchasable_name %>
+          Type: <%= line_item.listing.name %>
+          Quantity: <%= line_item.quantity %>
+        <% end %>
+      </td>
+      <td><%= order.total %></td>
+      <% if order.delivered? %>
+        <% else %>
+          <td>Deliver&nbsp; &nbsp; <%= link_to "Deliver", admin_order_path(order, order: {state: "delivered"}), method: :put, class: "btn btn-success"%></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+</div>

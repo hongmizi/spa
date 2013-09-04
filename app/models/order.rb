@@ -3,16 +3,22 @@ class Order < ActiveRecord::Base
 
   default_scope order('created_at')
 
-  state_machine :state, initail: :pending do
+  state_machine :state, initial: :pending do
     event :deliver do
-      transaction pending: :delivered
+      transition pending: :delivered
     end
 
     event :close do
-      transaction pending: :closed
+      transition pending: :closed
     end
   end
 
   has_many :line_items
   belongs_to :user
+
+  def total
+    line_item.inject(0) do | res, i|
+      res + i.quantity * i.price
+    end
+  end
 end

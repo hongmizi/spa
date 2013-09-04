@@ -8,6 +8,7 @@ class Admin::CosmeticsController < Admin::BaseController
   end
 
   def new
+    @cosmetic = Cosmetic.new
   end
 
   def edit

@@ -2,7 +2,7 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require_tree ./admin
-
+//= require ckeditor/init
 
 function remove_fields(link) {
   $(link).prev("input[type=hidden]").val("1");

@@ -36,6 +36,9 @@ GEM
     byebug (1.8.2)
       columnize (~> 0.3.6)
       debugger-linecache (~> 1.2.0)
+    ckeditor (4.0.4)
+      mime-types
+      orm_adapter
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.1)
@@ -166,6 +169,7 @@ PLATFORMS
 DEPENDENCIES
   awesome_nested_set
   byebug
+  ckeditor
   coffee-rails (~> 3.2.1)
   database_cleaner
   devise

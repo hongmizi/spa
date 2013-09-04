@@ -1,11 +1,16 @@
 IBeautySpaNyc::Application.routes.draw do
+  mount Ckeditor::Engine => '/ckeditor'
+
   get "dashboard/show"
 
   devise_for :users
 
   root to: 'high_voltage/pages#show', id: 'home'
+  mount Ckeditor::Engine => "/ckeditor"
 
   resources :cosmetics, only: [:index, :show]
+  resources :orders, only: [:show]
+  get "/checkout", to: "orders#new"
 
   get "/cart", to: "cart#show"
   post "/cart", to: "cart#add_product"
