@@ -1,0 +1,29 @@
+<div class="container">
+  <div>
+    <%= link_to "Add", new_admin_brand_path, class: "btn btn-primary" %>
+  </div>
+  <table class="table">
+    <tr>
+      <th>Brand</th>
+      <th>Edit</th>
+      <th>Operatation</th>
+      <th>Cosmetics</th>
+    </tr>
+    <% @brands.each do |brand|%>
+      <tr class="success">
+        <td><%= brand.name %></td>
+        <td><%= link_to "Edit", edit_admin_brand_path(brand), class: "btn"%></td>
+        <td>
+          <%= link_to "Destroy", admin_brand_path(brand), method: :delete, class: "btn btn-danger", confirm: "are you sure ?"%>
+        </td>
+        <td>
+          <ol>
+            <% brand.cosmetics.each do |cosmetic|%>
+              <li><%= link_to cosmetic.name, cosmetic_path(cosmetic) %></li>
+            <% end %>
+          </ol>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>

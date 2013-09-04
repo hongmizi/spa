@@ -8,13 +8,19 @@ class Admin::BrandsController < Admin::BaseController
   end
 
   def new
+    @brand = Brand.new
+  end
+
+
+  def edit
+    @brand = Brand.find params[:id]
   end
 
   def create
     brand  = Brand.new params[:brand]
 
     if brand.save
-      return redirect_to admin_brands_path, alert: "successful"
+      return redirect_to admin_brands_path, notice: "successful"
     else
       return redirect_to admin_brands_path, alert: brand.errors.full_messages.to_sentence
     end
@@ -23,7 +29,7 @@ class Admin::BrandsController < Admin::BaseController
   def update
     @brand = Brand.find params[:id]
     if @brand.update_attributes params[:brand]
-      return redirect_to admin_brands_path, alert: "successful"
+      return redirect_to admin_brands_path, notice: "successful"
     else
       return redirect_to admin_brands_path, alert: @brand.errors.full_messages.to_sentence
     end
@@ -32,7 +38,7 @@ class Admin::BrandsController < Admin::BaseController
   def destroy
     brand = Brand.find params[:id]
     if brand.destroy
-      return redirect_to admin_brands_path, alert: "successful"
+      return redirect_to admin_brands_path, notice: "successful"
     else
       return redirect_to admin_brands_path, alert: brand.errors.full_messages.to_sentence
     end

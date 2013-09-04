@@ -1,0 +1,10 @@
+<%= form_for @brand, url: url  do |f|%>
+  <span class="help-inline">Name</span>
+  <%= f.text_field :name, placeholder: "Please enter the name of brand"%><br/>
+
+  <span class="help-inline">Description</span>
+    <%= f.cktext_area :description, placeholder: "Please enter the description of brand", :ckeditor => {:language => "en"} %>
+
+  <%= f.submit "commit", class:"btn btn-lg btn-primary"%>
+<% end %>
+</script>
