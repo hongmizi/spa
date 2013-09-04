@@ -1,0 +1,8 @@
+<div>
+  <%= link_to "cart", cart_path %>
+</div>
+<div>
+  <%  @cosmetics.each do |cosmetic| %>
+    <%= render "cosmetic", cosmetic: cosmetic %>
+  <% end %>
+</div>

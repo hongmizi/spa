@@ -1,0 +1,12 @@
+<ol>
+  <% @cart.line_items.each do |line_item|%>
+    <li>
+      <% if line_item.listing.present? && line_item.listing.purchasable.present? %>
+        Name: <%= link_to line_item.listing.purchasable.name, line_item.listing.purchasable%> Quantity: <%= line_item.quantity %>
+    <% end %>
+    <%= link_to "Remove", cart_path(line_item: line_item.id), method: :delete%>
+  </li>
+<% end %>
+
+<%= link_to "Checkout", "/" %>
+</ol>

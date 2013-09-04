@@ -1,10 +1,7 @@
-class Admin::AdminController < ApplicationController
+class Admin::BaseController < ApplicationController
   before_filter :authenticate_user!
   before_filter :ensure_user_is_admin
   layout "admin"
-
-  def show
-  end
 
   private
     def ensure_user_is_admin

@@ -1,4 +1,4 @@
-class Admin::OrdersController < ApplicationController
+class Admin::OrdersController < Admin::BaseController
   before_filter :authenticate_user!
   before_filter :ensure_is_admin
 

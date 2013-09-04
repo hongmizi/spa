@@ -1,0 +1,30 @@
+<div class="container">
+  <div>
+    <%= link_to "Add", new_admin_cosmetic_path, class: "btn btn-primary" %>
+  </div>
+  <table class="table">
+    <tr>
+      <th>Cosmetic</th>
+      <th>Edit</th>
+      <th>State</th>
+    </tr>
+    <% @cosmetics.each do |cosmetic|%>
+      <% if cosmetic.shelved?%>
+        <tr class="success">
+        <% else %>
+          <tr class="danger">
+          <% end %>
+        <td><%= cosmetic.name %></td>
+        <td><%= link_to "Edit", edit_admin_cosmetic_path(cosmetic), class: "btn"%></td>
+      <% if cosmetic.shelved?%>
+        <td>Shelved&nbsp; &nbsp; <%= link_to "Off Shelved", admin_cosmetic_path(cosmetic, cosmetic: {state: "off_shelved"}), method: :put, class: "btn btn-danger"%></td>
+        <% else %>
+          <td>Off Shelved&nbsp; &nbsp; <%= link_to "Shelved", admin_cosmetic_path(cosmetic, cosmetic: {state: "shelved"}), method: :put, class: "btn btn-success"%></td>
+        <% end %>
+        <td>
+          <%= link_to "Destroy", admin_cosmetic_path(cosmetic), method: :delete, class: "btn btn-danger", confirm: "are you sure ?"%>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>

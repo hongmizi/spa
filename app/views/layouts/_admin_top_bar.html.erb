@@ -8,15 +8,16 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="#">Spa</a>
+    <a class="navbar-brand" href="/">Spa</a>
   </div>
 
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse navbar-ex1-collapse">
     <ul class="nav navbar-nav">
-      <li><a href="#">Dashboard</a></li>
-      <li><%= link_to "Products", admin_products_path %></li>
-      <li><%= link_to "Brands", admin_products_path %></li>
+      <li><%= link_to "Dashboard", "/admin" %></li>
+      <li><%= link_to "Cosmetics", admin_cosmetics_path %></li>
+      <li><%= link_to "Gift Certificates", admin_gift_certificates_path %></li>
+      <li><%= link_to "Brands", admin_brands_path %></li>
       <li><%= link_to "Orders", admin_orders_path %></li>
     </ul>
   </div><!-- /.navbar-collapse -->

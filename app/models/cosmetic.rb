@@ -1,11 +1,12 @@
-class Product < ActiveRecord::Base
+class Cosmetic < ActiveRecord::Base
   default_scope order('created_at')
 
-  attr_accessible :brand_id, :description, :name
+  attr_accessible :brand_id, :description, :name, :state, :listings_attributes
 
   has_many :images, as: :imageable, dependent: :destroy
+  has_many :listings, as: :purchasable
+  accepts_nested_attributes_for :listings, allow_destroy: true, reject_if: lambda {|a| a[:name].blank? }
 
-  validates :stock, :numericality => {:greater_than_or_equal_to => 0}
   scope :shelved, where(state: 'shelved')
 
   state_machine :state, initial: :off_shelved do
@@ -17,4 +18,6 @@ class Product < ActiveRecord::Base
       transition :shelved => :off_shelved
     end
   end
+
+  validates :listings, presence: true
 end

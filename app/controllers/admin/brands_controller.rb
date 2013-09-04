@@ -1,7 +1,4 @@
-class Admin::BrandsController < ApplicationController
-  before_filter :authenticate_user!
-  before_filter :ensure_is_admin
-
+class Admin::BrandsController < Admin::BaseController
   def index
     @brands = Brand.all
   end
@@ -38,14 +35,6 @@ class Admin::BrandsController < ApplicationController
       return redirect_to admin_brands_path, alert: "successful"
     else
       return redirect_to admin_brands_path, alert: brand.errors.full_messages.to_sentence
-    end
-  end
-
-
-  private
-  def ensure_is_admin
-    if !current_user.has_role? :admin
-      return redirect_to root_path, alert: "You don't have permission."
     end
   end
 end
