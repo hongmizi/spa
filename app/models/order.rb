@@ -18,7 +18,7 @@ class Order < ActiveRecord::Base
   validates :line_items, presence: true
 
   def total
-    line_item.inject(0) do | res, i|
+    line_items.inject(0) do | res, i|
       res + i.quantity * i.price
     end
   end

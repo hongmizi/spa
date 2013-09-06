@@ -12,8 +12,8 @@ class Admin::OrdersController < Admin::BaseController
 
   def update
     @order = Order.find params[:id]
-    if @order.update_attributes params[:order]
-      return redirect_to admin_orders_path, alert: "successful"
+    if @order.update_attributes params[:order], without_protection: true
+      return redirect_to admin_orders_path, notice: "successful"
     else
       return redirect_to admin_orders_path, alert: @order.errors.full_messages.to_sentence
     end
@@ -22,7 +22,7 @@ class Admin::OrdersController < Admin::BaseController
   def destroy
     order = Order.find params[:id]
     if order.destroy
-      return redirect_to admin_orders_path, alert: "successful"
+      return redirect_to admin_orders_path, notice: "successful"
     else
       return redirect_to admin_orders_path, alert: order.errors.full_messages.to_sentence
     end
