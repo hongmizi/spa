@@ -11,5 +11,11 @@
 
   <%= link_to_add_fields "add type", f, :listings %> <br />
 
+  <%= f.fields_for :avatar do | builder | %>
+    <%= builder.label :avatar, "Avatar"%>
+    <%= builder.file_field :image %>
+  <% end %>
+
+
   <%= f.submit "commit", class:"btn btn-lg btn-primary"%>
 <% end %>
