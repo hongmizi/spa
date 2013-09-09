@@ -7,6 +7,7 @@
       <th>GiftCertificate</th>
       <th>Edit</th>
       <th>State</th>
+      <th>Operation</th>
     </tr>
     <% @gift_certificates.each do |gift_certificate|%>
       <% if gift_certificate.shelved?%>
@@ -17,9 +18,9 @@
         <td><%= gift_certificate.name %></td>
         <td><%= link_to "Edit", edit_admin_gift_certificate_path(gift_certificate), class: "btn"%></td>
       <% if gift_certificate.shelved?%>
-        <td>Shelved&nbsp; &nbsp; <%= link_to "Off Shelved", admin_gift_certificate_path(gift_certificate, gift_certificate: {state: "off_shelved"}), method: :put, class: "btn btn-danger"%></td>
+        <td>Shelved </td> <td> <%= link_to "Off Shelved", admin_gift_certificate_path(gift_certificate, gift_certificate: {state: "off_shelved"}), method: :put, class: "btn btn-danger"%></td>
         <% else %>
-          <td>Off Shelved&nbsp; &nbsp; <%= link_to "Shelved", admin_gift_certificate_path(gift_certificate, gift_certificate: {state: "shelved"}), method: :put, class: "btn btn-success"%></td>
+          <td>Off Shelved</td> <td> <%= link_to "Shelved", admin_gift_certificate_path(gift_certificate, gift_certificate: {state: "shelved"}), method: :put, class: "btn btn-success"%></td>
         <% end %>
         <td>
           <%= link_to "Destroy", admin_gift_certificate_path(gift_certificate), method: :delete, class: "btn btn-danger", confirm: "are you sure ?"%>

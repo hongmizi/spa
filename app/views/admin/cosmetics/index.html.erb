@@ -7,6 +7,7 @@
       <th>Cosmetic</th>
       <th>Edit</th>
       <th>State</th>
+      <th>Operation</th>
     </tr>
     <% @cosmetics.each do |cosmetic|%>
       <% if cosmetic.shelved?%>
@@ -17,9 +18,9 @@
         <td><%= cosmetic.name %></td>
         <td><%= link_to "Edit", edit_admin_cosmetic_path(cosmetic), class: "btn"%></td>
       <% if cosmetic.shelved?%>
-        <td>Shelved&nbsp; &nbsp; <%= link_to "Off Shelved", admin_cosmetic_path(cosmetic, cosmetic: {state: "off_shelved"}), method: :put, class: "btn btn-danger"%></td>
+        <td>Shelved </td> <td> <%= link_to "Off Shelved", admin_cosmetic_path(cosmetic, cosmetic: {state: "off_shelved"}), method: :put, class: "btn btn-danger"%></td>
         <% else %>
-          <td>Off Shelved&nbsp; &nbsp; <%= link_to "Shelved", admin_cosmetic_path(cosmetic, cosmetic: {state: "shelved"}), method: :put, class: "btn btn-success"%></td>
+          <td>Off Shelved </td> <td> <%= link_to "Shelved", admin_cosmetic_path(cosmetic, cosmetic: {state: "shelved"}), method: :put, class: "btn btn-success"%></td>
         <% end %>
         <td>
           <%= link_to "Destroy", admin_cosmetic_path(cosmetic), method: :delete, class: "btn btn-danger", confirm: "are you sure ?"%>

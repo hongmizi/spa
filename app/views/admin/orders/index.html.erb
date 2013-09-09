@@ -22,8 +22,9 @@
       </td>
       <td><%= order.total %></td>
       <% if order.delivered? %>
+        <td>Delivered</td>
         <% else %>
-          <td>Deliver&nbsp; &nbsp; <%= link_to "Deliver", admin_order_path(order, order: {state: "delivered"}), method: :put, class: "btn btn-success"%></td>
+          <td>Undeliver&nbsp; &nbsp; <%= link_to "Deliver", admin_order_path(order, order: {state: "delivered"}), method: :put, class: "btn btn-success"%></td>
         <% end %>
       </tr>
     <% end %>
