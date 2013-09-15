@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130904162554) do
+ActiveRecord::Schema.define(:version => 20130915073142) do
 
   create_table "brands", :force => true do |t|
     t.string   "name"
@@ -107,7 +107,6 @@ ActiveRecord::Schema.define(:version => 20130904162554) do
   add_index "line_items", ["user_id"], :name => "index_line_items_on_user_id"
 
   create_table "listings", :force => true do |t|
-    t.string   "name"
     t.integer  "stock"
     t.datetime "created_at",                                     :null => false
     t.datetime "updated_at",                                     :null => false
@@ -118,6 +117,34 @@ ActiveRecord::Schema.define(:version => 20130904162554) do
 
   add_index "listings", ["purchasable_id"], :name => "index_listings_on_purchasable_id"
   add_index "listings", ["purchasable_type"], :name => "index_listings_on_purchasable_type"
+
+  create_table "listings_option_values", :force => true do |t|
+    t.integer "listing_id"
+    t.integer "option_value_id"
+  end
+
+  add_index "listings_option_values", ["listing_id"], :name => "index_listings_option_values_on_listing_id"
+  add_index "listings_option_values", ["option_value_id"], :name => "index_listings_option_values_on_option_value_id"
+
+  create_table "option_types", :force => true do |t|
+    t.integer  "purchasable_id"
+    t.string   "purchasable_type"
+    t.string   "name"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "option_types", ["purchasable_id"], :name => "index_option_types_on_purchasable_id"
+  add_index "option_types", ["purchasable_type"], :name => "index_option_types_on_purchasable_type"
+
+  create_table "option_values", :force => true do |t|
+    t.integer  "option_type_id"
+    t.string   "name"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "option_values", ["option_type_id"], :name => "index_option_values_on_option_type_id"
 
   create_table "orders", :force => true do |t|
     t.integer  "user_id"

@@ -11,6 +11,8 @@ class Cosmetic < ActiveRecord::Base
   has_many :listings, as: :purchasable
   accepts_nested_attributes_for :listings, allow_destroy: true, reject_if: lambda {|a| a[:name].blank? }
   belongs_to :brand
+  has_many :option_types, as: :purchasable
+  accepts_nested_attributes_for :option_types, allow_destroy: true, reject_if: lambda {|a| a[:name].blank? }
 
   scope :shelved, where(state: 'shelved')
 
