@@ -59,9 +59,7 @@ ActiveRecord::Schema.define(:version => 20130915073142) do
     t.string   "name"
     t.text     "description"
     t.integer  "brand_id"
-    t.string   "type"
     t.string   "state"
-    t.integer  "stock"
     t.integer  "category_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false

@@ -3,4 +3,5 @@ class OptionValue < ActiveRecord::Base
   belongs_to :option_type
 
   validates :name, presence: true
+  validates_uniqueness_of :name, :scope => [:option_type_id]
 end

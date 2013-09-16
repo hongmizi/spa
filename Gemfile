@@ -1,4 +1,5 @@
-source 'https://rubygems.org'
+#source 'https://rubygems.org'
+source 'http://ruby.taobao.org'
 
 gem 'rails', '3.2.13'
 gem 'high_voltage'
@@ -33,7 +34,9 @@ end
 
 group :development, :test do 
   gem 'mysql2'
-  gem 'factory_girl',       '2.0.2'      # 2.0.3 breaks loading factories with a Duplication Error
+  gem 'factory_girl'
+  gem 'factory_girl_rails'
+  gem 'database_cleaner'
   gem 'rspec'
   gem 'rspec-rails'
   gem 'byebug'

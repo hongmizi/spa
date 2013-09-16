@@ -1,5 +1,5 @@
 GEM
-  remote: https://rubygems.org/
+  remote: http://ruby.taobao.org/
   specs:
     actionmailer (3.2.13)
       actionpack (= 3.2.13)
@@ -63,6 +63,9 @@ GEM
     erubis (2.7.0)
     execjs (2.0.0)
     factory_girl (2.0.2)
+    factory_girl_rails (1.1.0)
+      factory_girl (~> 2.0.0)
+      railties (>= 3.0.0)
     high_voltage (1.2.4)
     hike (1.2.3)
     i18n (0.6.1)
@@ -173,7 +176,8 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   database_cleaner
   devise
-  factory_girl (= 2.0.2)
+  factory_girl
+  factory_girl_rails
   high_voltage
   jquery-rails
   less-rails-bootstrap

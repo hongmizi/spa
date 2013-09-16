@@ -1,7 +1,7 @@
 class Cosmetic < ActiveRecord::Base
   default_scope order('created_at')
 
-  attr_accessible :brand_id, :description, :name, :state, :listings_attributes, :avatar_attributes, :avatar
+  attr_accessible :brand_id, :description, :name, :state, :listings_attributes, :avatar_attributes, :avatar, :option_types_attributes
 
   has_many :images, as: :imageable, dependent: :destroy
 
@@ -26,10 +26,58 @@ class Cosmetic < ActiveRecord::Base
     end
   end
 
+  after_save :create_listings
+
   def avatar
     super || build_avatar
   end
 
+  private
+  def create_listings
+    byebug
+    update_listing 0, option_types.count
+  end
 
-  validates :listings, presence: true
+  def update_listing m, n
+    if n <= 0
+      return
+    elsif m >= n
+      option_values = @data.inject({}) do |res, i|
+        res.merge i
+      end
+
+      option_values = option_values.map do | k, v |
+        v
+      end
+
+      if !exist_listing?(option_values)
+        listing = listings.create price: 0, stock: 0
+        option_values.each do |value|
+          listing.option_values << value
+        end
+      end
+
+      @data = []
+      return;
+    else
+      @data = []
+      sum = option_types[m].option_values.count
+      for i in m...sum
+        @data << { option_types[m] =>  option_types[m].option_values[i] }
+        update_listing(m + 1, n)
+      end
+    end
+  end
+
+  def exist_listing? option_values
+    return false if listings.blank?
+    listings.each do |listing|
+      option_values.each do |value|
+        if !listing.option_values.include? value
+          return false
+        end
+      end
+    end
+    return true
+  end
 end

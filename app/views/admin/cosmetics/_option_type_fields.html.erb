@@ -1,0 +1,9 @@
+<div class="fields">
+  <%= f.label :type, "Option Type"%>
+  <%= f.text_field :name%>
+  <%= f.fields_for :option_values do |builder| %>
+    <%= render "option_type_fileds" , f: builder %>
+  <% end %>
+  <%= link_to_add_fields "add value", f, :option_values %> <br />
+  <%= link_to_remove_fields "Remove", f %>
+</div>

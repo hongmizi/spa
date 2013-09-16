@@ -2,19 +2,19 @@
   <span class="help-inline">Name</span>
   <%= f.text_field :name, placeholder: "Please enter the name of cosmetic"%><br/>
 
-  <span class="help-inline">Description</span>
-    <%= f.cktext_area :description, placeholder: "Please enter the description of cosmetic", :ckeditor => {:language => "en"} %>
-
-   <%= f.fields_for :listings do | builder| %>
-    <%= render "listing_fields" , f: builder%>
+   <%= f.fields_for :option_types do | builder| %>
+    <%= render "option_type_fileds" , f: builder%>
   <% end %>
 
-  <%= link_to_add_fields "add type", f, :listings %> <br />
+  <%= link_to_add_fields "add type", f, :option_types %> <br />
 
   <%= f.fields_for :avatar do | builder | %>
     <%= builder.label :avatar, "Avatar"%>
     <%= builder.file_field :image %>
   <% end %>
+
+  <span class="help-inline">Description</span>
+    <%= f.cktext_area :description, placeholder: "Please enter the description of cosmetic", :ckeditor => {:language => "en"} %>
 
 
   <%= f.submit "commit", class:"btn btn-lg btn-primary"%>
