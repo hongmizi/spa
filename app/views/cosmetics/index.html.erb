@@ -1,7 +1,4 @@
 <div>
-  <%= link_to "cart", cart_path %>
-</div>
-<div>
   <%  @cosmetics.each_with_index do |cosmetic, index | %>
     <%= index + 1 %>: <%= render "cosmetic", cosmetic: cosmetic %>
   <% end %>

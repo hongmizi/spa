@@ -3,7 +3,7 @@
   <%= f.text_field :name, placeholder: "Please enter the name of cosmetic"%><br/>
 
    <%= f.fields_for :option_types do | builder| %>
-    <%= render "option_type_fileds" , f: builder%>
+    <%= render "option_type_fields" , f: builder%>
   <% end %>
 
   <%= link_to_add_fields "add type", f, :option_types %> <br />

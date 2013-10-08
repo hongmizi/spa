@@ -16,7 +16,7 @@
       <td>
         <% order.line_items.each do |line_item| %>
           Name: <%=  line_item.purchasable_name %>
-          Type: <%= line_item.listing.name %>
+          Type: <%= line_item.listing.types %>
           Quantity: <%= line_item.quantity %>
         <% end %>
       </td>

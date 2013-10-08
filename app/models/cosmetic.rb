@@ -26,19 +26,19 @@ class Cosmetic < ActiveRecord::Base
     end
   end
 
-  after_save :create_listings
-
   def avatar
     super || build_avatar
   end
 
-  private
-  def create_listings
-    byebug
-    update_listing 0, option_types.count
+  def update_listings
+    create_listing 0, option_types.count
   end
 
-  def update_listing m, n
+
+  after_save :update_listings
+
+  private
+  def create_listing m, n
     if n <= 0
       return
     elsif m >= n
@@ -64,7 +64,7 @@ class Cosmetic < ActiveRecord::Base
       sum = option_types[m].option_values.count
       for i in m...sum
         @data << { option_types[m] =>  option_types[m].option_values[i] }
-        update_listing(m + 1, n)
+        create_listing(m + 1, n)
       end
     end
   end

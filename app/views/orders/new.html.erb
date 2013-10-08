@@ -3,7 +3,7 @@
     <% if line_item.listing && line_item.can_purchase? %>
     <li> 
       name: <%= line_item.purchasable_name %>
-      type: <%= line_item.listing.name %>
+      type: <%= line_item.listing.types %>
       Quantity: <%= line_item.quantity %>
     </li>
     <% end %>

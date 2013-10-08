@@ -1,0 +1,7 @@
+<%= form_for @listing, url: admin_listing_path(@listing), method: :put do |f|%>
+  <%= f.label :stock%>
+  <%= f.number_field :stock%> <br />
+  <%= f.label :price%>
+  <%= f.text_field :price%> <br />
+  <%= f.submit "Commit", class: "btn btn-lg"%>
+<% end %>

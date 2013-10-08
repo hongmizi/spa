@@ -1,9 +1,10 @@
-<%= link_to "cart", cart_path %>
 <h2><%= @cosmetic.name %></h2>
 <%  @cosmetic.listings.each do |listing|%>
-  <h4>TYPE: <%= listing.name  %></h4>
-  <%= link_to "add to cart", cart_path(listing: listing.id), method: :create%>
-<h2><%= listing.price %></h2>
+  <% if listing.can_purchase? %>
+    <h4>TYPE: <%= listing.types  %></h4>
+    <%= link_to "add to cart", cart_path(listing: listing.id), method: :create%>
+    <h2><%= listing.price %></h2>
+  <% end %>
 <% end %>
 
 <%= @cosmetic.description.html_safe %>

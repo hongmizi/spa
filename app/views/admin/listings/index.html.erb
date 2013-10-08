@@ -1,0 +1,17 @@
+
+<div class="well">
+  <p align = "center">
+    <%= @purchasable.name %>
+  </p>
+</div>
+
+<ol>
+  <% @listings.each do |listing|%> 
+    <li>
+      type: <%= listing.options %>
+      stock: <%= listing.stock%>
+    price: <%= listing.price %>
+  <%= link_to "Edit", edit_admin_listing_path(listing) %>
+    </li>
+<% end %>
+</ol>

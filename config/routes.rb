@@ -1,8 +1,5 @@
 IBeautySpaNyc::Application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
-
-  get "dashboard/show"
-
   devise_for :users
 
   root to: 'high_voltage/pages#show', id: 'home'
@@ -23,5 +20,6 @@ IBeautySpaNyc::Application.routes.draw do
     resources :gift_certificates
     resources :orders
     resources :brands
+    resources :listings
   end
 end

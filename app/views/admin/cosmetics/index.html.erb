@@ -6,6 +6,7 @@
     <tr>
       <th>Cosmetic</th>
       <th>Edit</th>
+      <th>Edit Listings</th>
       <th>State</th>
       <th>Operation</th>
     </tr>
@@ -17,6 +18,7 @@
           <% end %>
         <td><%= cosmetic.name %></td>
         <td><%= link_to "Edit", edit_admin_cosmetic_path(cosmetic), class: "btn"%></td>
+        <td><%= link_to "Edit", admin_listings_path(purchasable_id: cosmetic.id, purchasable_type: cosmetic.class.name), class: "btn"%></td>
       <% if cosmetic.shelved?%>
         <td>Shelved </td> <td> <%= link_to "Off Shelved", admin_cosmetic_path(cosmetic, cosmetic: {state: "off_shelved"}), method: :put, class: "btn btn-danger"%></td>
         <% else %>

@@ -11,4 +11,10 @@ class Listing < ActiveRecord::Base
   def can_purchase?
     stock > 1 && purchasable
   end
+
+  def types 
+    option_values.inject("") do |res, i|
+      res + i.name + " "
+    end
+  end
 end
