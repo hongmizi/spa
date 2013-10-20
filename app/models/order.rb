@@ -4,8 +4,11 @@ class Order < ActiveRecord::Base
   default_scope order('created_at')
 
   state_machine :state, initial: :pending do
+    event :pay do
+      transition pending: :paid
+    end
     event :deliver do
-      transition pending: :delivered
+      transition paid: :delivered
     end
 
     event :close do
@@ -15,7 +18,7 @@ class Order < ActiveRecord::Base
 
   has_many :line_items
   belongs_to :user
-  validates :line_items, presence: true
+  validates :line_items, :name, :address, presence: true
 
   def total
     line_items.inject(0) do | res, i|

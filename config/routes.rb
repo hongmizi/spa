@@ -6,8 +6,7 @@ IBeautySpaNyc::Application.routes.draw do
   mount Ckeditor::Engine => "/ckeditor"
 
   resources :cosmetics, only: [:index, :show]
-  resources :orders, only: [:show, :index, :create]
-  get "/checkout", to: "orders#new"
+  resources :orders
 
   get "/cart", to: "cart#show"
   post "/cart", to: "cart#add_product"
@@ -22,4 +21,9 @@ IBeautySpaNyc::Application.routes.draw do
     resources :brands
     resources :listings
   end
+
+  get "checkout", to: "checkout#checkout"
+  get "completed_payment_request", to: "checkout#accomplish"
+  get "canceled_payment_request",  to: "checkout#cancel"
+  post "checkout_notification", to: "checkout#notification"
 end

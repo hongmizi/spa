@@ -20,11 +20,16 @@
           Quantity: <%= line_item.quantity %>
         <% end %>
       </td>
+
       <td><%= order.total %></td>
+      <% if order.pending? %>
+        <td>Pending</td>
+      <% end %>
+      <% if order.paid? %>
+        <td>Paid&nbsp; &nbsp; <%= link_to "Deliver", admin_order_path(order, order: {state: "delivered"}), method: :put, class: "btn btn-success"%></td>
+      <% end %>
       <% if order.delivered? %>
         <td>Delivered</td>
-        <% else %>
-          <td>Undeliver&nbsp; &nbsp; <%= link_to "Deliver", admin_order_path(order, order: {state: "delivered"}), method: :put, class: "btn btn-success"%></td>
         <% end %>
       </tr>
     <% end %>

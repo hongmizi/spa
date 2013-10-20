@@ -12,6 +12,7 @@ gem 'state_machine'
 gem 'role_model'
 gem 'awesome_nested_set'
 gem "ckeditor"
+gem 'paypal_adaptive'
 
 
 # Bundle edge Rails instead:

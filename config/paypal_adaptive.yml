@@ -1,0 +1,23 @@
+development:
+  environment: "sandbox"
+  username: "hongmizi-facilitator_api1.126.com"
+  password: "1381313238"
+  signature: "AFcWxV21C7fd0v3bYYYRCpSSRl31AQq6sdyIztUxvmYgH7wGe2Opu6uu"
+  application_id: "APP-80W284485P519543T"
+  api_cert_file: ""
+
+test:
+  environment: "sandbox"
+  username: "sandbox_username"
+  password: "sandbox_password"
+  signature: "sandbox_signature"
+  application_id: "sandbox_app_id"
+  api_cert_file: "/path/to_cert"
+
+production:
+  environment: "production"
+  username: "my_production_username"
+  password: "my_production_password"
+  signature: "AFcWxV21C7fd0v3bYYYRCpSSRl31AH6GbPntO2aKoz8KqZ36mYc6sVqb"
+  application_id: "APP-80W284485P519543T"
+  api_cert_file: "/path/to_cert"
